@@ -3,7 +3,7 @@ defmodule Insight.Mixfile do
 
   def project do
     [app: :insight,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.2",
      description: description,
      build_embedded: Mix.env == :prod,
@@ -26,7 +26,7 @@ defmodule Insight.Mixfile do
   defp package do
     [maintainers: ["Adán Sánchez de Pedro Crespo"],
      licenses: ["MIT"],
-     links: []]
+     links: %{"GitHub" => "https://github.com/stampery/elixir-insight"}]
   end
 
   defp deps do
