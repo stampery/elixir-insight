@@ -17,8 +17,8 @@ defmodule Insight do
       @endpoint unquote endpoint
 
       def get_utxos address do
-        query = HTTPoison.get("#{@endpoint}addr/#{address}/utxo", [], params: %{noCache: 1})
-        case query do
+        request = HTTPoison.get("#{@endpoint}addr/#{address}/utxo", [], params: %{noCache: 1})
+        case request do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             txrefs = Poison.decode! body
             utxos = Enum.map txrefs, fn tx -> %Utxo{
@@ -37,8 +37,8 @@ defmodule Insight do
       end
 
       def broadcast signed do
-        query = HTTPoison.post("#{@endpoint}tx/send", {:form, [rawtx: signed]})
-        case query do
+        request = HTTPoison.post("#{@endpoint}tx/send", {:form, [rawtx: signed]})
+        case request do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             tx = Map.merge %Tx{}, map_atomize((Poison.decode!(body))["tx"])
             {:ok, tx}
