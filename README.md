@@ -45,9 +45,16 @@ end
 ```
 ### Some compatible API endpoints available out there
 
-+ BitPay testnet: [https://test-insight.bitpay.com/api/]
+**Livenet**
+
 + BitAccess livenet: [https://search.bitaccess.ca/api/]
 + Localbitcoins livenet: [https://chain.localbitcoins.com/api/]
 + BlockExplorer livenet: [https://blockexplorer.com/api/]
-+ BlockExplorer testnet: [https://testnet.blockexplorer.com/api/]
 + DigiExplorer livenet: [http://digiexplorer.info/api/]
++ ExploreBTCD livenet: [http://explorebtcd.info/]
+
+**Testnet**
+
++ BitPay testnet: [https://test-insight.bitpay.com/api/]
++ BlockExplorer testnet: [https://testnet.blockexplorer.com/api/]
+
