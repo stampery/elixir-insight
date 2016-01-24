@@ -51,7 +51,7 @@ end
 + Localbitcoins livenet: [https://chain.localbitcoins.com/api/]
 + BlockExplorer livenet: [https://blockexplorer.com/api/]
 + DigiExplorer livenet: [http://digiexplorer.info/api/]
-+ ExploreBTCD livenet: [http://explorebtcd.info/]
++ ExploreBTCD livenet: [http://explorebtcd.info/api/]
 
 **Testnet**
 
