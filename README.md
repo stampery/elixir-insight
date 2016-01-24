@@ -51,7 +51,7 @@ end
 + Localbitcoins livenet: [https://chain.localbitcoins.com/api/]
 + BlockExplorer livenet: [https://blockexplorer.com/api/]
 + DigiExplorer livenet: [https://digiexplorer.info/api/]
-+ CoinSpace livenet[https://live.coin.space]
++ CoinSpace livenet: [https://live.coin.space]
 + RandomRe livenet: [https://btc.random.re/insight/]
 + ExploreBTCD livenet: [http://explorebtcd.info/api/] (No HTTPS)
 
