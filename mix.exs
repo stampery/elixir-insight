@@ -3,7 +3,7 @@ defmodule Insight.Mixfile do
 
   def project do
     [app: :insight,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.2",
      description: description,
      build_embedded: Mix.env == :prod,
@@ -19,8 +19,7 @@ defmodule Insight.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :httpoison],
-     mod: {GCloudStorage, []}]
+    [applications: [:logger, :httpoison]]
   end
 
   defp package do

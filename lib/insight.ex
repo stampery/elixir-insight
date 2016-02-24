@@ -1,4 +1,5 @@
 defmodule Insight do
+  require Logger
 
   defmodule Utxo do
     defstruct [ :txid, :vout, :address, :script, :satoshis ]
@@ -29,9 +30,12 @@ defmodule Insight do
               satoshis: round(tx["amount"] * 100000000)
             } end
             {:ok, utxos}
+            Logger.info "[Insight] OK", Enum.count utxos
           {:ok, %HTTPoison.Response{status_code: status, body: body}} ->
+            Logger.error "[Insight] HTTP error", {status_code: status, body: body}
             {:error, {status, body}}
           {:error, %HTTPoison.Error{reason: reason}} ->
+            Logger.error "[Insight] HTTPoison error", {reason: reason}
             {:error, reason}
         end
       end
