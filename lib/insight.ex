@@ -30,12 +30,12 @@ defmodule Insight do
               satoshis: round(tx["amount"] * 100000000)
             } end
             {:ok, utxos}
-            Logger.info "[Insight] OK", Enum.count utxos
+            Logger.info "[Insight][UTXO] OK", Enum.count utxos
           {:ok, %HTTPoison.Response{status_code: status, body: body}} ->
-            Logger.error "[Insight] HTTP error", {status_code: status, body: body}
+            Logger.error "[Insight][UTXO] HTTP error", %{status_code: status, body: body}
             {:error, {status, body}}
           {:error, %HTTPoison.Error{reason: reason}} ->
-            Logger.error "[Insight] HTTPoison error", {reason: reason}
+            Logger.error "[Insight][UTXO] HTTPoison error", %{reason: reason}
             {:error, reason}
         end
       end
@@ -45,10 +45,13 @@ defmodule Insight do
         case request do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             tx = Map.merge %Tx{}, map_atomize((Poison.decode!(body))["tx"])
+            Logger.info "[Insight][TX] OK", Enum.count utxos
             {:ok, tx}
           {:ok, %HTTPoison.Response{status_code: status, body: body}} ->
+            Logger.error "[Insight][TX] HTTP error", %{status_code: status, body: body}
             {:error, {status, body}}
           {:error, %HTTPoison.Error{reason: reason}} ->
+            Logger.error "[Insight][TX] HTTPoison error", %{reason: reason}
             {:error, reason}
         end
       end
