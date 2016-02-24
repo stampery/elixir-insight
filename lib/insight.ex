@@ -45,7 +45,7 @@ defmodule Insight do
         case request do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             tx = Map.merge %Tx{}, map_atomize((Poison.decode!(body))["tx"])
-            Logger.info "[Insight][TX] OK", Enum.count utxos
+            Logger.info "[Insight][TX] OK", tx
             {:ok, tx}
           {:ok, %HTTPoison.Response{status_code: status, body: body}} ->
             Logger.error "[Insight][TX] HTTP error", %{status_code: status, body: body}
