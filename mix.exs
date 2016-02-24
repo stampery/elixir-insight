@@ -3,7 +3,7 @@ defmodule Insight.Mixfile do
 
   def project do
     [app: :insight,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.2",
      description: description,
      build_embedded: Mix.env == :prod,

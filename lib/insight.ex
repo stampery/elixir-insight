@@ -1,5 +1,4 @@
 defmodule Insight do
-  require Logger
 
   defmodule Utxo do
     defstruct [ :txid, :vout, :address, :script, :satoshis ]
@@ -14,6 +13,7 @@ defmodule Insight do
 
   defmacro __using__(endpoint) when is_binary(endpoint) do
     quote do
+      require Logger
 
       @endpoint unquote endpoint
 
