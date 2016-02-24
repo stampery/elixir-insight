@@ -46,6 +46,7 @@ end
 ### Some compatible API endpoints available out there
 **Livenet**
 
++ Stampery livenet: https://bitcoin.stampery.com/insight/api/
 + BitAccess livenet: https://search.bitaccess.ca/api/
 + Localbitcoins livenet: https://chain.localbitcoins.com/api/
 + BlockExplorer livenet: https://blockexplorer.com/api/
