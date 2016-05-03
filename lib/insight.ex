@@ -29,13 +29,13 @@ defmodule Insight do
               script: tx["scriptPubKey"],
               satoshis: round(tx["amount"] * 100000000)
             } end
+            Logger.info "[Insight][UTXO] OK #{inspect Enum.count utxos}"
             {:ok, utxos}
-            Logger.info "[Insight][UTXO] OK", Enum.count utxos
           {:ok, %HTTPoison.Response{status_code: status, body: body}} ->
-            Logger.error "[Insight][UTXO] HTTP error", %{status_code: status, body: body}
+            Logger.error "[Insight][UTXO] HTTP error #{inspect %{status_code: status, body: body}}"
             {:error, {status, body}}
           {:error, %HTTPoison.Error{reason: reason}} ->
-            Logger.error "[Insight][UTXO] HTTPoison error", %{reason: reason}
+            Logger.error "[Insight][UTXO] HTTPoison error #{inspect %{reason: reason}}"
             {:error, reason}
         end
       end
@@ -44,14 +44,14 @@ defmodule Insight do
         request = HTTPoison.post("#{@endpoint}tx/send", {:form, [rawtx: signed]})
         case request do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-            tx = Map.merge %Tx{}, map_atomize((Poison.decode!(body))["tx"])
-            Logger.info "[Insight][TX] OK", tx
+            tx = %Tx{hash: (Poison.decode!(body))["txid"]}
+            Logger.info "[Insight][TX] OK #{inspect tx}"
             {:ok, tx}
           {:ok, %HTTPoison.Response{status_code: status, body: body}} ->
-            Logger.error "[Insight][TX] HTTP error", %{status_code: status, body: body}
+            Logger.error "[Insight][TX] HTTP error #{inspect %{status_code: status, body: body}}"
             {:error, {status, body}}
           {:error, %HTTPoison.Error{reason: reason}} ->
-            Logger.error "[Insight][TX] HTTPoison error", %{reason: reason}
+            Logger.error "[Insight][TX] HTTPoison error #{inspect %{reason: reason}}"
             {:error, reason}
         end
       end
