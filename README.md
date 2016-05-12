@@ -1,4 +1,4 @@
-# Insight
+# Insight [![hex.pm version](https://img.shields.io/hexpm/v/plug.svg?style=flat)](https://hex.pm/packages/insight)
 
 Elixir package for consuming any [Insight](https://insight.is/)-powered Bitcoin explorer.
 
